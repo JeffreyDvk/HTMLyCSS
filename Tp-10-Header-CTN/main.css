@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "Angelina";
+    src: url("font/Angelina.ttf");
+}
+body{
+    font-family: "Angelina";
+    color: white;
+}
+ul{
+    list-style: none;
+}
+li{
+    display: inline;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+.menu,.navbar,.navbar-menu{
+    display: flex;
+}
+.navbar{
+    background-color: black;
+    justify-content: space-between;
+    padding: 0px 50px;
+}
+
+.navbar-menu{
+    align-items: center;
+}
+.menu-item{
+    position: relative;
+    margin: 0px 50px;
+}
+img{
+    height: 70px;
+}
+.sub-links{
+    position: absolute;
+    background-color: white;
+    width:fit-content;
+    padding: 20px 30px;
+    left: 0;
+    transform: translateX(-25%);
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 5px;
+    opacity: 0;
+    transition: all .5s;
+    z-index: -1;
+    top: -100px;
+}
+.item-link-link{
+    color: black;
+}
+.link-1:hover .grp-1{
+    opacity: 1;
+    top: 50px;
+}
+

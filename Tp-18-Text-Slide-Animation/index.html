@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    	<link rel="stylesheet" type="text/css" href="font/font-awesome/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <style>
+            body {
+                background: #f1f1f1;
+                height: 80vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .hover-up{
+                position: relative;
+            }
+            .hover-up:after, .hover-up:before{
+                content: "" attr(data-hover) "";
+                color: orangered;
+                font-size: clamp(40px, 12vw, 150px);
+                transition: 0.5s;
+                font-weight: 500;
+                will-change: transform;
+                display: inline-block;
+            }
+            .hover-up::before{
+                transform-origin: bottom;
+            }
+            .hover-up:after{
+                transform-origin: top;
+                transform: translateY(100%) rotateX(-90deg);
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .hover-up:hover:before{
+                transform: translateY(-100%) rotateX(-90deg);
+            }
+            .hover-up:hover:after{
+                transform: translateY(0%) rotateX(0deg);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="hover-up" data-hover="Accueil"></div>
+        
+        
+    	
+    	
+    	<script type="text/javascript" src="md/js/jquery-3.6.0.min.js"></script>
+    	<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+    	<script>
+            
+    	</script>
+    </body>
+</html>

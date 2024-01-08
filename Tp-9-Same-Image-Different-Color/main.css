@@ -1,0 +1,32 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-size: 30px;
+    color: blue;
+}
+.container{
+    position: absolute;
+    height: 100;
+    width: 100%;
+}
+.container .slide{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+.slide{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.slide1{
+    background-image: url("im1.jpg");
+}
+.slide2{
+    background-image: url("im2.jpg");
+}

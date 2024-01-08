@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AnimeJs Multi-heart Scale</title>
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="heart"></div>
+        </div>
+        <script src="anime.min.js"></script>
+    </body>
+    <script>
+        var container = document.querySelector(".container");
+        for(i=0;i<100;i++){
+            var heart = document.createElement('div');
+            heart.classList.add('heart');
+            container.appendChild(heart);
+        }
+        function animateHeart(){
+            anime({
+                targets: '.heart',
+                rotate: -45,
+                translateX: function(){
+                    return anime.random(-700,700);
+                },
+                translateY: function(){
+                    return anime.random(-700,700);
+                },
+                scale: function(){
+                    return anime.random(.5,3);
+                },
+                easing: 'easeInOutExpo',
+                delay: 500,
+                duration: 2500,
+                complete: animateHeart
+            })
+        }
+        animateHeart();
+    </script>
+</html>

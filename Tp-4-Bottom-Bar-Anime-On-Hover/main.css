@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.bg-hover{
+    display: inline;
+    font-size: 16px;
+    font-family: sans-serif;
+    background-image: linear-gradient(90deg,blue,red,yellow);
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    padding-bottom: 5px;
+    line-height: 1.5em;
+}
+.bg-hover:hover{
+    background-size: 100% 3px;
+    transition: background-size ease 500ms;
+}

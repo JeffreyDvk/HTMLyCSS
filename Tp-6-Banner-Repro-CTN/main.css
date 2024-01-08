@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("img/bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+.navbar{
+    position: relative;
+    padding: 20px;
+}
+.navbar h1{
+    display: inline;
+    font-size: 25px;
+    margin-left: 50px;
+}
+.nav-title a{
+    color: #fff;
+    text-decoration: none;
+}
+.list{
+    display: inline;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 50px;
+}
+.list li{
+    display: inline;
+    position: relative;
+    list-style-type: none;
+    margin: 0px 15px;
+}
+.list-item{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: .5s;
+}
+.list-item:hover,.active-item{
+    color: rgb(34, 101, 189);
+}
+.intro{
+    text-align: center;
+    margin-top: 230px;
+    padding: 0px 230px;
+    color: white;
+}
+.intro-title{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 45px;
+}
+.intro-desc{
+    margin: 20px 0px;
+}
+.intro-btn a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0px 25px;
+    padding: 5px 15px;
+    border: 2px solid rgb(102, 158, 232);
+    font-weight: 600;
+    transition: .5s;
+    white-space: nowrap;
+}
+.intro-btn a:hover,.intro-btn-active{
+    background-color: rgb(102, 158, 232);
+    border-color: rgb(102, 158, 232);
+    border-radius: 5px;
+}

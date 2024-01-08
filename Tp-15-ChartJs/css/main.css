@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Josefin";
+    src: url("font/Josefin.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Josefin";
+}
+body{
+    font-weight: 400;
+}

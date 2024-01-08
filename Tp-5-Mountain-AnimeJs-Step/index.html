@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div class="container">
+            <img src="img/stars.png" id="stars">
+            <img src="img/moon.png" id="moon">
+            <img src="img/mountains_behind.png" id="mountains_behind">
+            <h2 class="text">Moon with Anime<span class="js">Js</span><br><span class="author">by LokiD</span></h2><br>
+            <a href="#" id="btn">Play</a>
+            <img src="img/mountains_front.png" id="mountains_front">
+        </div>
+        <script src="md/js/anime.min.js"></script>
+        <script>
+            var btn = document.getElementById('btn');
+            let timeline = anime.timeline({
+                autoplay: false,
+                duration: 1500,
+                direction: 'alternate',
+            })
+            .add({
+                targets: '#btn',
+                translateY: [0,1500],
+                easing: 'easeInOutExpo'
+            })
+            .add({
+                targets: '#stars',
+                translateY: [-3000,0],
+                easing: 'easeOutSine'
+            })
+            .add({
+                targets: '#mountains_behind',
+                translateY: [1500,0],
+                easing: 'easeInOutExpo'
+            })
+            .add({
+                targets: '#mountains_front',
+                translateY: [1500,0],
+                easing: 'easeInOutExpo'
+            })
+            .add({
+                targets: '#moon',
+                translateY: [-1500,0],
+                easing: 'easeOutSine'
+            })
+            .add({
+                targets: '.text',
+                translateX: [1500,0],
+                easing: 'easeInOutExpo'
+            })
+            .add({
+                targets: '#btn',
+                translateY: [1500,0],
+                easing: 'easeInOutExpo',
+                endDelay: 1000
+            })
+            btn.onclick = timeline.play;
+        </script>
+    </body>
+</html>

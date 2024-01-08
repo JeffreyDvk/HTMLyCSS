@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+    </head>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: sans-serif;
+        }
+        .render{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 600px;
+        }
+        .render div{
+            width: 100px;
+            height: 100px;
+            background-size: initial;
+            background-repeat: no-repeat;
+        }
+        input{
+            display: none;
+        }
+        label{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: white;
+            border-radius: 4px;
+            padding: 0.4em 0.8em;
+        }
+        label:hover{
+            cursor: pointer;
+        }
+    </style>
+    <body>
+        <label for="img">Choose an image</label>
+        <input type="file" id="img" placeholder="Choose your image">
+        <div class="render"></div>
+    	
+    	
+    	<script type="text/javascript" src="md/js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="md/js/anime.min.js"></script>
+        <script type="text/javascript" src="md/js/jquery.waitforimages.js"></script>
+    	<script>
+            var _URL = window.URL || window.webkitURL;
+            $("input").change(function (e) {
+                var file, img;
+                if ((file = this.files[0])) {
+                    img = new Image();
+                    var objectUrl = _URL.createObjectURL(file);
+                    img.src = objectUrl;
+                    img.onload = function () {
+                        // Get image resolution to determine the number of blocks on x and y axis
+                        let ratio = img.width / img.height
+                        let [w,h] = [600 , 600/ratio]
+                        let [x,y] = [ Math.floor(w/100) , Math.floor(h/100)]
+
+                        // Clear the render block and set his new height to match the ratio image
+                        $(".render").empty() 
+                        $(".render").css("height",(y*100)+"px")
+                        
+                        // Create the differents part of the image
+                        for(i=0;i<y;i++){
+                            for(j=0;j<x;j++){
+                                let part = document.createElement("div")
+                                $(part).css("background-position",-j*100+"px "+(-i*100)+"px")
+                                document.querySelector(".render").appendChild(part)
+                            }
+                        }
+                        $(".render div").css("background-size",'600px '+(600/ratio)+"px")  
+                        
+                        // Get the image selected in the form
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.addEventListener("load", function(e) {
+                            // Animate the blocks when it's backrgound is completed loaded
+                            $(".render div").css("background-image",'url("'+e.target.result+'")').waitForImages(function() {
+                                let timeline = anime.timeline({
+                                    delay: anime.stagger(100),
+                                    duration: 2500,
+                                    autoplay: true,
+                                    loop: true,
+                                    direction: 'alternate',
+                                    easing: 'easeInOutExpo'
+                                })
+                                .add({
+                                    targets: '.render div',
+                                    translateX: function(){
+                                        return anime.random(-700,700);
+                                    },
+                                    translateY: function(){
+                                        return anime.random(-500,500);
+                                    },
+                                    rotate: function(){
+                                        return anime.random(-360,360);
+                                    },
+                                })
+                                .add({
+                                    targets: '.text span',
+                                    translateX: 0,
+                                    translateY: 0,
+                                    rotate: 0
+                                })
+                            }, $.noop, true);      
+                        })
+                        _URL.revokeObjectURL(objectUrl);
+
+                        
+                    } 
+                }
+            });
+    	</script>
+    </body>
+</html>
